@@ -1,0 +1,51 @@
+export const platforms = [
+  {
+    id: 'liqon',
+    name: 'LIQON',
+    description: 'Consent-first identity and likeness infrastructure for AI systems.',
+    detailedDescription: 'Infrastructure for managing identity, consent, and likeness in AI-generated media.',
+    logo: '/liqon_logo.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'framegenix',
+    name: 'Framegenix',
+    description: 'Creative AI tools for filmmakers, musicians, and storytellers.',
+    detailedDescription: 'A creative AI ecosystem supporting production, collaboration, and rights awareness.',
+    logo: '/frame_genix.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'voycity',
+    name: 'VOYCITY',
+    description: 'Real-time language and voice translation infrastructure.',
+    detailedDescription: 'Language and voice translation designed for real-time global communication.',
+    logo: '/Voycitylogo.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'culturevault',
+    name: 'CultureVault',
+    description: 'Digital preservation and access for cultural archives.',
+    detailedDescription: 'Tools for preserving, organizing, and accessing cultural and historical media.',
+    logo: '/culture_vault.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'datawrap',
+    name: 'Datawrap',
+    description: 'Structured data preparation and governance for AI workflows.',
+    detailedDescription: 'Data normalization and governance for enterprise and creative AI systems.',
+    logo: '/datawrap.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'aural-unity',
+    name: 'Aural-Unity',
+    description: 'Audio integrity, provenance, and rights protection systems.',
+    detailedDescription: 'Audio authentication and rights enforcement across AI and digital media.',
+    logo: '/AuralUnity_logo.png',
+    dropboxLink: '#',
+  },
+];
+
