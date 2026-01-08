@@ -4,7 +4,7 @@
 }
 
 .about-hero {
-  padding: 8rem 0 4rem;
+  padding: 6rem 0 3rem;
   position: relative;
   overflow: hidden;
 }
@@ -16,14 +16,30 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(47, 128, 237, 0.12) 0%, transparent 60%);
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(47, 128, 237, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(169, 199, 240, 0.06) 0%, transparent 50%);
   pointer-events: none;
+}
+
+.about-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 128, 237, 0.3), transparent);
 }
 
 .about-hero .container {
   position: relative;
   z-index: 1;
+}
+
+.about-hero-content {
   text-align: center;
+  padding: 2rem 0;
 }
 
 .about-hero .page-title {
@@ -35,8 +51,11 @@
 }
 
 .about-content-section {
-  padding: 4rem 0 8rem;
+  padding: 3rem 0 6rem;
   position: relative;
+  background: 
+    radial-gradient(circle at 40% 20%, rgba(47, 128, 237, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(169, 199, 240, 0.02) 0%, transparent 50%);
 }
 
 .about-content-section::before {
@@ -54,38 +73,61 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.about-block {
+  background: rgba(47, 128, 237, 0.05);
+  border-left: 3px solid rgba(47, 128, 237, 0.3);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.about-block:hover {
+  background: rgba(47, 128, 237, 0.08);
+  border-left-color: var(--accent-blue);
+  transform: translateX(5px);
 }
 
 .about-text {
   font-size: clamp(1.1rem, 1.8vw, 1.25rem);
   color: var(--text-secondary);
   line-height: 1.8;
-  text-align: center;
+  text-align: left;
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .about-hero {
-    padding: 6rem 0 3rem;
+    padding: 4rem 0 2rem;
   }
 
   .about-content-section {
-    padding: 3rem 0 6rem;
+    padding: 2.5rem 0 4rem;
   }
 
   .about-content {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .about-hero {
-    padding: 5rem 0 2rem;
+    padding: 3rem 0 1.5rem;
   }
 
   .about-content {
-    gap: 1.25rem;
+    gap: 1rem;
+  }
+
+  .about-block {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .about-content-section {
+    padding: 2rem 0 3rem;
   }
 }
 
