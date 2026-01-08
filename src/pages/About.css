@@ -4,9 +4,13 @@
 }
 
 .about-hero {
-  padding: 6rem 0 3rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 2rem 0;
 }
 
 .about-hero::before {
@@ -128,6 +132,382 @@
 
   .about-content-section {
     padding: 2rem 0 3rem;
+  }
+}
+
+/* ===== NEW STYLES FOR ENRICHED ABOUT PAGE ===== */
+
+/* Hero Description */
+.hero-description {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--text-secondary);
+  margin-top: 1.5rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mission, Vision, Values Section */
+.mvv-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.05) 0%, rgba(169, 199, 255, 0.02) 100%);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+  border-bottom: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mvv-card {
+  padding: 2.5rem;
+  background: rgba(47, 128, 237, 0.05);
+  border: 1px solid rgba(47, 128, 237, 0.15);
+  border-top: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.mvv-card:hover {
+  background: rgba(47, 128, 237, 0.1);
+  border-top-color: var(--highlight-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(47, 128, 237, 0.15);
+}
+
+.mvv-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.mvv-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.mvv-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Core Principles Section */
+.principles-section {
+  padding: 6rem 0;
+  background: var(--bg-primary);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.principle-card {
+  padding: 2rem;
+  background: rgba(47, 128, 237, 0.05);
+  border: 1px solid rgba(47, 128, 237, 0.15);
+  border-left: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.principle-card:hover {
+  background: rgba(47, 128, 237, 0.1);
+  border-left-color: var(--highlight-color);
+  transform: translateX(4px);
+}
+
+.principle-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.principle-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.principle-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Timeline Section */
+.timeline-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.03) 0%, rgba(169, 199, 255, 0.01) 100%);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-color), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 100px;
+  padding-bottom: 3rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 32px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
+}
+
+.timeline-content {
+  padding: 1.5rem 2rem;
+  background: rgba(47, 128, 237, 0.05);
+  border: 1px solid rgba(47, 128, 237, 0.15);
+  border-left: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  background: rgba(47, 128, 237, 0.1);
+  border-left-color: var(--highlight-color);
+}
+
+.timeline-year {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.timeline-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Leadership Section */
+.leadership-section {
+  padding: 6rem 0;
+  background: var(--bg-primary);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+
+.leader-card {
+  text-align: center;
+  padding: 2.5rem;
+  background: rgba(47, 128, 237, 0.05);
+  border: 1px solid rgba(47, 128, 237, 0.15);
+  transition: all 0.3s ease;
+}
+
+.leader-card:hover {
+  background: rgba(47, 128, 237, 0.1);
+  border-color: var(--accent-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(47, 128, 237, 0.15);
+}
+
+.leader-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color), var(--highlight-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--bg-primary);
+  margin: 0 auto 1.5rem;
+}
+
+.leader-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.leader-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.leader-bio {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Our Approach Section */
+.approach-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.05) 0%, rgba(169, 199, 255, 0.02) 100%);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.approach-content {
+  max-width: 900px;
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.approach-block {
+  padding: 2.5rem;
+  background: rgba(47, 128, 237, 0.05);
+  border: 1px solid rgba(47, 128, 237, 0.15);
+  border-left: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.approach-block:hover {
+  background: rgba(47, 128, 237, 0.1);
+  border-left-color: var(--highlight-color);
+}
+
+.approach-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.approach-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive Adjustments for New Sections */
+@media (max-width: 768px) {
+  .mvv-grid,
+  .principles-grid,
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mvv-card,
+  .principle-card,
+  .leader-card,
+  .approach-block {
+    padding: 2rem;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 60px;
+  }
+
+  .timeline-marker {
+    left: 12px;
+  }
+
+  .timeline-content {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .mvv-section,
+  .principles-section,
+  .timeline-section,
+  .leadership-section,
+  .approach-section {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .mvv-icon {
+    font-size: 2.5rem;
+  }
+
+  .principle-icon {
+    font-size: 2rem;
+  }
+
+  .leader-avatar {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+    padding-bottom: 2rem;
+  }
+}
   }
 }
 
