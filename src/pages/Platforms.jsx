@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Target, Link2, Scale, CheckCircle } from 'lucide-react';
 import { platforms } from '../data/platforms';
 import './Platforms.css';
 
@@ -96,23 +97,20 @@ const platformDetails = {
 };
 
 const Platforms = () => {
-  const [expandedPlatform, setExpandedPlatform] = useState(null);
-  const [activeTab, setActiveTab] = useState('useCases');
-
-  const togglePlatform = (platformId) => {
-    if (expandedPlatform === platformId) {
-      setExpandedPlatform(null);
-    } else {
-      setExpandedPlatform(platformId);
-      setActiveTab('useCases');
-    }
-  };
-
   return (
     <div className="platforms-page">
       <section className="platforms-hero">
+        <div className="hero-background">
+          <div className="gradient-orb orb-1"></div>
+          <div className="gradient-orb orb-2"></div>
+        </div>
         <div className="container">
-          <div className="platforms-hero-content">
+          <motion.div
+            className="platforms-hero-content"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <h1 className="page-title">Our Platforms</h1>
             <p className="page-subtitle">
               RL AI Media Group operates a portfolio of independent but interoperable platforms.
@@ -120,30 +118,55 @@ const Platforms = () => {
             <p className="page-description">
               Each company addresses a specific infrastructure gap in the AI ecosystem.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Ecosystem Intro */}
       <section className="ecosystem-intro-section">
         <div className="container">
-          <h2 className="section-title">Why Independent Platforms?</h2>
+          <motion.h2
+            className="section-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Why Independent Platforms?
+          </motion.h2>
+          <div className="accent-line-center"></div>
           <div className="ecosystem-grid">
-            <div className="ecosystem-card">
-              <div className="ecosystem-icon">🎯</div>
-              <h3>Specialized Expertise</h3>
-              <p>Each platform focuses on solving one problem exceptionally well, not spreading thin across multiple domains.</p>
-            </div>
-            <div className="ecosystem-card">
-              <div className="ecosystem-icon">🔗</div>
-              <h3>Interoperable by Design</h3>
-              <p>Platforms work together seamlessly while maintaining autonomy and clear boundaries of responsibility.</p>
-            </div>
-            <div className="ecosystem-card">
-              <div className="ecosystem-icon">⚖️</div>
-              <h3>Governance First</h3>
-              <p>Every platform is built with accountability, consent, and cultural respect as core architecture principles.</p>
-            </div>
+            {[
+              {
+                icon: <Target size={32} />,
+                title: 'Specialized Expertise',
+                description: 'Each platform focuses on solving one problem exceptionally well, not spreading thin across multiple domains.'
+              },
+              {
+                icon: <Link2 size={32} />,
+                title: 'Interoperable by Design',
+                description: 'Platforms work together seamlessly while maintaining autonomy and clear boundaries of responsibility.'
+              },
+              {
+                icon: <Scale size={32} />,
+                title: 'Governance First',
+                description: 'Every platform is built with accountability, consent, and cultural respect as core architecture principles.'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="ecosystem-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="ecosystem-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -153,8 +176,15 @@ const Platforms = () => {
         <div className="container">
           <div className="platforms-list">
             {platforms.map((platform, index) => (
-              <div key={platform.id} className={`platform-item ${expandedPlatform === platform.id ? 'expanded' : ''}`}>
-                <div className="platform-item-content" onClick={() => togglePlatform(platform.id)}>
+              <motion.div
+                key={platform.id}
+                className="platform-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="platform-item-content">
                   <div className="platform-item-logo">
                     <img
                       src={platform.logo}
@@ -174,58 +204,10 @@ const Platforms = () => {
                     <h2 className="platform-item-name">{platform.name}</h2>
                     <p className="platform-item-description">{platform.detailedDescription}</p>
                   </div>
-                  <div className="platform-expand-icon">
-                    {expandedPlatform === platform.id ? '−' : '+'}
-                  </div>
                 </div>
 
-                {expandedPlatform === platform.id && platformDetails[platform.id] && (
-                  <div className="platform-details">
-                    <div className="platform-tabs">
-                      <button
-                        className={`platform-tab ${activeTab === 'useCases' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('useCases')}
-                      >
-                        Use Cases
-                      </button>
-                      <button
-                        className={`platform-tab ${activeTab === 'features' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('features')}
-                      >
-                        Key Features
-                      </button>
-                      <button
-                        className={`platform-tab ${activeTab === 'integration' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('integration')}
-                      >
-                        Integration
-                      </button>
-                    </div>
-
-                    <div className="platform-tab-content">
-                      {activeTab === 'useCases' && (
-                        <ul className="detail-list">
-                          {platformDetails[platform.id].useCases.map((useCase, i) => (
-                            <li key={i}>{useCase}</li>
-                          ))}
-                        </ul>
-                      )}
-                      {activeTab === 'features' && (
-                        <ul className="detail-list">
-                          {platformDetails[platform.id].features.map((feature, i) => (
-                            <li key={i}>{feature}</li>
-                          ))}
-                        </ul>
-                      )}
-                      {activeTab === 'integration' && (
-                        <p className="integration-text">{platformDetails[platform.id].integration}</p>
-                      )}
-                    </div>
-                  </div>
-                )}
-
                 {index < platforms.length - 1 && <div className="platform-divider" />}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

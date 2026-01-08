@@ -1,39 +1,90 @@
+import { motion } from 'framer-motion';
+import { Mail, DollarSign } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
   return (
-    <div className="contact-page">
+    <main id="main" className="contact-page">
       <section className="contact-hero">
+        <div className="hero-background">
+          <div className="gradient-orb orb-1"></div>
+          <div className="gradient-orb orb-2"></div>
+        </div>
         <div className="container">
-          <div className="contact-hero-content">
+          <motion.div
+            className="contact-hero-content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <h1 className="page-title">Contact</h1>
             <p className="contact-hero-subtitle">
-              Get in touch with RL AI Media Group
+              For general inquiries: <strong>info@rlaimediagroup.com</strong>
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="contact-content-section">
+      {/* Contact Blocks */}
+      <section className="contact-blocks-section">
         <div className="container">
-          <div className="contact-content">
-            <div className="contact-block">
-              <p className="contact-label">For general inquiries:</p>
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>Get in Touch</h2>
+            <div className="accent-line" />
+          </motion.div>
+
+          <div className="contact-blocks-grid">
+            <motion.div
+              className="contact-block-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -6 }}
+            >
+              <Mail size={48} className="block-icon" />
+              <h3>General Inquiries</h3>
               <a href="mailto:info@rlaimediagroup.com" className="contact-email">
                 info@rlaimediagroup.com
               </a>
-            </div>
-            <div className="contact-divider"></div>
-            <div className="contact-block">
-              <p className="contact-label">For investor relations:</p>
+              <ul className="contact-topics">
+                <li>General questions about RL AI Media Group</li>
+                <li>Media and press inquiries</li>
+                <li>Collaboration and partnership ideas</li>
+              </ul>
+              <p className="response-time">We typically respond within 2 business days.</p>
+            </motion.div>
+
+            <motion.div
+              className="contact-block-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ y: -6 }}
+            >
+              <DollarSign size={48} className="block-icon" />
+              <h3>Investor Relations</h3>
               <a href="mailto:investors@rlaimediagroup.com" className="contact-email">
                 investors@rlaimediagroup.com
               </a>
-            </div>
+              <ul className="contact-topics">
+                <li>Investor meetings and diligence</li>
+                <li>Access to extended materials</li>
+                <li>Strategic partnership discussions</li>
+              </ul>
+              <p className="response-time">We typically respond within 2 business days.</p>
+            </motion.div>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 

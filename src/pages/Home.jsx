@@ -1,70 +1,111 @@
+import { motion } from 'framer-motion';
+import { Zap, Globe, CheckCircle } from 'lucide-react';
 import { platforms } from '../data/platforms';
 import './Home.css';
 
 const Home = () => {
   return (
     <div className="home-page">
-      {/* Top Section */}
+      {/* Hero Section with Animated Background */}
       <section className="hero-section">
+        <div className="hero-background">
+          <div className="gradient-orb orb-1"></div>
+          <div className="gradient-orb orb-2"></div>
+          <div className="gradient-orb orb-3"></div>
+          <div className="floating-shapes">
+            <div className="shape shape-1"></div>
+            <div className="shape shape-2"></div>
+            <div className="shape shape-3"></div>
+          </div>
+        </div>
+        
         <div className="container">
-          <div className="hero-content">
+          <motion.div
+            className="hero-content"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             <h1 className="hero-title">RL AI Media Group</h1>
             <p className="hero-subtitle">
               AI infrastructure and media platforms focused on identity, culture, and governance.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* What We Do Section */}
       <section className="what-we-do-section">
+        <div className="geometric-accent accent-top"></div>
         <div className="container">
-          <h2 className="section-title">What We Do</h2>
+          <motion.h2
+            className="section-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            What We Do
+          </motion.h2>
+          <div className="accent-line-center"></div>
+          
           <div className="what-we-do-content">
-            <div className="what-we-do-block">
-              <p className="what-we-do-text">
-                RL AI Media Group builds practical AI platforms for organizations working with people, data, and creative systems.
-              </p>
-            </div>
-            <div className="what-we-do-block">
-              <p className="what-we-do-text">
-                We focus on trust, accountability, and long-term use — not experimentation.
-              </p>
-            </div>
-            <div className="what-we-do-block">
-              <p className="what-we-do-text">
-                Our companies operate across media, technology, and cultural infrastructure.
-              </p>
-            </div>
-          </div>
-          <div className="what-we-do-features">
-            <div className="feature-item">
-              <div className="feature-icon">✓</div>
-              <div className="feature-text">Trust & Accountability</div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">✓</div>
-              <div className="feature-text">Long-term Solutions</div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">✓</div>
-              <div className="feature-text">Cultural Infrastructure</div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">✓</div>
-              <div className="feature-text">Practical AI Platforms</div>
-            </div>
+            {[
+              {
+                icon: <Zap size={24} />,
+                text: 'RL AI Media Group builds practical AI platforms for organizations working with people, data, and creative systems.'
+              },
+              {
+                icon: <Globe size={24} />,
+                text: 'We focus on trust, accountability, and long-term use — not experimentation.'
+              },
+              {
+                icon: <Globe size={24} />,
+                text: 'Our companies operate across media, technology, and cultural infrastructure.'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="what-we-do-block"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ x: 10, backgroundColor: 'rgba(47, 128, 237, 0.08)' }}
+              >
+                <div className="block-icon">{item.icon}</div>
+                <p className="what-we-do-text">{item.text}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
+        <div className="geometric-accent accent-bottom"></div>
       </section>
 
       {/* Our Platforms Section */}
       <section className="platforms-section">
         <div className="container">
-          <h2 className="section-title">Our Platforms</h2>
+          <motion.h2
+            className="section-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Platforms
+          </motion.h2>
+          <div className="accent-line-center"></div>
+          
           <div className="platforms-grid">
-            {platforms.map((platform) => (
-              <div key={platform.id} className="platform-card">
+            {platforms.map((platform, index) => (
+              <motion.div
+                key={platform.id}
+                className="platform-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
                 <div className="platform-logo-wrapper">
                   <img
                     src={platform.logo}
@@ -82,7 +123,7 @@ const Home = () => {
                 </div>
                 <h3 className="platform-name">{platform.name}</h3>
                 <p className="platform-description">{platform.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

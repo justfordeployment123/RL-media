@@ -11,19 +11,58 @@
   position: relative;
   overflow: hidden;
   padding: 2rem 0;
+  background: linear-gradient(180deg, #0A1220 0%, #0f1a2e 100%);
 }
 
-.about-hero::before {
-  content: '';
+.hero-background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 50% 0%, rgba(47, 128, 237, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 80% 70%, rgba(169, 199, 240, 0.06) 0%, transparent 50%);
-  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 20s ease-in-out infinite;
+}
+
+.gradient-orb.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(47, 128, 237, 0.6) 0%, rgba(47, 128, 237, 0) 70%);
+  top: -150px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.gradient-orb.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(169, 199, 255, 0.4) 0%, rgba(169, 199, 255, 0) 70%);
+  bottom: -100px;
+  right: -100px;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(-15px, -30px) scale(0.95);
+  }
+  75% {
+    transform: translate(30px, 20px) scale(1.05);
+  }
 }
 
 .about-hero::after {
@@ -34,11 +73,12 @@
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(47, 128, 237, 0.3), transparent);
+  z-index: 1;
 }
 
 .about-hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .about-hero-content {
@@ -49,9 +89,11 @@
 .about-hero .page-title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  color: white;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(47, 128, 237, 0.3);
 }
 
 .about-content-section {
@@ -140,7 +182,7 @@
 /* Hero Description */
 .hero-description {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--text-secondary);
+  color: #A9C7FF;
   margin-top: 1.5rem;
   line-height: 1.7;
   max-width: 700px;
@@ -180,7 +222,9 @@
 }
 
 .mvv-icon {
-  font-size: 3rem;
+  color: #2F80ED;
+  width: 48px;
+  height: 48px;
   margin-bottom: 1.5rem;
 }
 
@@ -198,6 +242,13 @@
   margin: 0;
 }
 
+.accent-line-center {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2F80ED, transparent);
+  margin: 0 auto 3rem;
+}
+
 /* Core Principles Section */
 .principles-section {
   padding: 6rem 0;
@@ -207,8 +258,9 @@
 .section-title {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
   color: var(--text-primary);
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   text-align: center;
   letter-spacing: -0.01em;
 }
@@ -243,10 +295,13 @@
   background: rgba(47, 128, 237, 0.1);
   border-left-color: var(--highlight-color);
   transform: translateX(4px);
+  box-shadow: 0 8px 20px rgba(47, 128, 237, 0.1);
 }
 
 .principle-icon {
-  font-size: 2.5rem;
+  color: #2F80ED;
+  width: 40px;
+  height: 40px;
   margin-bottom: 1.25rem;
 }
 
