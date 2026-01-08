@@ -21,15 +21,39 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">What We Do</h2>
           <div className="what-we-do-content">
-            <p className="what-we-do-text">
-              RL AI Media Group builds practical AI platforms for organizations working with people, data, and creative systems.
-            </p>
-            <p className="what-we-do-text">
-              We focus on trust, accountability, and long-term use — not experimentation.
-            </p>
-            <p className="what-we-do-text">
-              Our companies operate across media, technology, and cultural infrastructure.
-            </p>
+            <div className="what-we-do-block">
+              <p className="what-we-do-text">
+                RL AI Media Group builds practical AI platforms for organizations working with people, data, and creative systems.
+              </p>
+            </div>
+            <div className="what-we-do-block">
+              <p className="what-we-do-text">
+                We focus on trust, accountability, and long-term use — not experimentation.
+              </p>
+            </div>
+            <div className="what-we-do-block">
+              <p className="what-we-do-text">
+                Our companies operate across media, technology, and cultural infrastructure.
+              </p>
+            </div>
+          </div>
+          <div className="what-we-do-features">
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <div className="feature-text">Trust & Accountability</div>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <div className="feature-text">Long-term Solutions</div>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <div className="feature-text">Cultural Infrastructure</div>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <div className="feature-text">Practical AI Platforms</div>
+            </div>
           </div>
         </div>
       </section>
