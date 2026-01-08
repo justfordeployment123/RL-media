@@ -6,13 +6,15 @@ const Platforms = () => {
     <div className="platforms-page">
       <section className="platforms-hero">
         <div className="container">
-          <h1 className="page-title">Our Platforms</h1>
-          <p className="page-subtitle">
-            RL AI Media Group operates a portfolio of independent but interoperable platforms.
-          </p>
-          <p className="page-description">
-            Each company addresses a specific infrastructure gap in the AI ecosystem.
-          </p>
+          <div className="platforms-hero-content">
+            <h1 className="page-title">Our Platforms</h1>
+            <p className="page-subtitle">
+              RL AI Media Group operates a portfolio of independent but interoperable platforms.
+            </p>
+            <p className="page-description">
+              Each company addresses a specific infrastructure gap in the AI ecosystem.
+            </p>
+          </div>
         </div>
       </section>
 

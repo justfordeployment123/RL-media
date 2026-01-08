@@ -4,7 +4,7 @@
 }
 
 .platforms-hero {
-  padding: 8rem 0 4rem;
+  padding: 6rem 0 3rem;
   position: relative;
   overflow: hidden;
 }
@@ -16,16 +16,32 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(47, 128, 237, 0.12) 0%, transparent 60%);
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(47, 128, 237, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(169, 199, 240, 0.06) 0%, transparent 50%);
   pointer-events: none;
+}
+
+.platforms-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 128, 237, 0.3), transparent);
 }
 
 .platforms-hero .container {
   position: relative;
   z-index: 1;
+}
+
+.platforms-hero-content {
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
+  padding: 2rem 0;
 }
 
 .page-title {
@@ -51,8 +67,11 @@
 }
 
 .platforms-list-section {
-  padding: 4rem 0 8rem;
+  padding: 3rem 0 6rem;
   position: relative;
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(47, 128, 237, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(169, 199, 240, 0.02) 0%, transparent 50%);
 }
 
 .platforms-list-section::before {
@@ -77,10 +96,28 @@
 .platform-item-content {
   display: grid;
   grid-template-columns: 200px 1fr;
-  gap: 3rem;
+  gap: 2.5rem;
   align-items: center;
-  padding: 3rem 0;
+  padding: 2.5rem 0;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.platform-item-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 60%;
+  background: linear-gradient(180deg, transparent, rgba(47, 128, 237, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.platform-item:hover .platform-item-content::before {
+  opacity: 1;
 }
 
 .platform-item:hover .platform-item-content {
@@ -119,7 +156,7 @@
 .platform-item-text {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .platform-item-name {
@@ -145,18 +182,18 @@
 
 @media (max-width: 768px) {
   .platforms-hero {
-    padding: 6rem 0 3rem;
+    padding: 4rem 0 2rem;
   }
 
   .platforms-list-section {
-    padding: 3rem 0 6rem;
+    padding: 2.5rem 0 4rem;
   }
 
   .platform-item-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
-    padding: 2.5rem 0;
+    padding: 2rem 0;
   }
 
   .platform-item:hover .platform-item-content {
@@ -175,12 +212,16 @@
 
 @media (max-width: 480px) {
   .platforms-hero {
-    padding: 5rem 0 2rem;
+    padding: 3rem 0 1.5rem;
   }
 
   .platform-item-content {
-    padding: 2rem 0;
-    gap: 1.5rem;
+    padding: 1.5rem 0;
+    gap: 1.25rem;
+  }
+
+  .platforms-list-section {
+    padding: 2rem 0 3rem;
   }
 }
 
