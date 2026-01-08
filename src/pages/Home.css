@@ -205,7 +205,7 @@
 
 .what-we-do-block {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
   background: rgba(47, 128, 237, 0.05);
   border: 1px solid rgba(47, 128, 237, 0.15);
@@ -223,8 +223,10 @@
 
 .block-icon {
   color: #2F80ED;
-  min-width: 24px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
+  margin-top: 0.125rem;
 }
 
 .what-we-do-text {
