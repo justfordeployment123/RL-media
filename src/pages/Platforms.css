@@ -4,9 +4,13 @@
 }
 
 .platforms-hero {
-  padding: 6rem 0 3rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 2rem 0;
 }
 
 .platforms-hero::before {
@@ -222,6 +226,400 @@
 
   .platforms-list-section {
     padding: 2rem 0 3rem;
+  }
+}
+
+/* ===== NEW STYLES FOR ENRICHED PLATFORMS PAGE ===== */
+
+/* Ecosystem Intro Section */
+.ecosystem-intro-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.05) 0%, rgba(169, 199, 255, 0.02) 100%);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+  border-bottom: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ecosystem-card {
+  padding: 2.5rem;
+  background: rgba(47, 128, 237, 0.05);
+  border: 1px solid rgba(47, 128, 237, 0.15);
+  border-left: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.ecosystem-card:hover {
+  background: rgba(47, 128, 237, 0.1);
+  border-left-color: var(--highlight-color);
+  transform: translateX(4px);
+}
+
+.ecosystem-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ecosystem-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.ecosystem-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Platform Expandable Details */
+.platform-item.expanded {
+  background: rgba(47, 128, 237, 0.03);
+}
+
+.platform-item-content {
+  cursor: pointer;
+  position: relative;
+}
+
+.platform-expand-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: var(--accent-color);
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.platform-item.expanded .platform-expand-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.platform-details {
+  padding: 2rem 0 2rem 2rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.platform-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(47, 128, 237, 0.1);
+}
+
+.platform-tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.platform-tab:hover {
+  color: var(--text-primary);
+}
+
+.platform-tab.active {
+  color: var(--accent-color);
+}
+
+.platform-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+.platform-tab-content {
+  padding: 1rem 0;
+}
+
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-list li {
+  padding: 0.75rem 0 0.75rem 2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+}
+
+.detail-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.integration-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  padding: 1rem 2rem;
+  background: rgba(47, 128, 237, 0.05);
+  border-left: 3px solid var(--accent-color);
+  margin: 0;
+}
+
+/* Comparison Matrix */
+.comparison-section {
+  padding: 6rem 0;
+  background: var(--bg-primary);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.comparison-table-wrapper {
+  overflow-x: auto;
+  margin-top: 3rem;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.comparison-table thead tr {
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.comparison-table th {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.comparison-table th:first-child {
+  text-align: left;
+}
+
+.comparison-table tbody tr {
+  border-bottom: 1px solid rgba(47, 128, 237, 0.1);
+  transition: background 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+  background: rgba(47, 128, 237, 0.05);
+}
+
+.comparison-table td {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.platform-name-cell {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.check-cell.primary {
+  color: var(--accent-color);
+}
+
+.check-cell.secondary {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.legend {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.legend-marker {
+  font-size: 1.2rem;
+}
+
+.legend-marker.primary {
+  color: var(--accent-color);
+}
+
+.legend-marker.secondary {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* Ecosystem Diagram */
+.ecosystem-diagram-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.03) 0%, rgba(169, 199, 255, 0.01) 100%);
+  border-top: 1px solid rgba(47, 128, 237, 0.1);
+}
+
+.ecosystem-visual {
+  max-width: 900px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ecosystem-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.layer-label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.platform-node {
+  padding: 1.5rem 2rem;
+  background: rgba(47, 128, 237, 0.1);
+  border: 2px solid var(--accent-color);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.platform-node:hover {
+  background: rgba(47, 128, 237, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(47, 128, 237, 0.2);
+}
+
+.ecosystem-connector {
+  height: 40px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-color), transparent);
+  margin: 0 auto;
+}
+
+.ecosystem-description {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 2rem;
+  background: rgba(47, 128, 237, 0.05);
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Responsive Adjustments for New Sections */
+@media (max-width: 768px) {
+  .ecosystem-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ecosystem-card {
+    padding: 2rem;
+  }
+
+  .platform-tabs {
+    flex-wrap: wrap;
+  }
+
+  .platform-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .comparison-table {
+    font-size: 0.9rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem 0.5rem;
+  }
+
+  .ecosystem-visual {
+    padding: 0 1rem;
+  }
+
+  .layer-label {
+    position: static;
+    writing-mode: horizontal-tb;
+    margin-bottom: 1rem;
+    transform: none;
+  }
+
+  .platform-node {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .platform-expand-icon {
+    font-size: 1.5rem;
+  }
+
+  .platform-details {
+    padding: 1rem 0 1rem 1rem;
   }
 }
 
