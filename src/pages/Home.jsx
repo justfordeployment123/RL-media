@@ -26,10 +26,12 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
+            <span className="hero-badge">AI Infrastructure & Media</span>
             <h1 className="hero-title">RL AI Media Group</h1>
             <p className="hero-subtitle">
               AI infrastructure and media platforms focused on identity, culture, and governance.
             </p>
+            <div className="hero-accent-line"></div>
           </motion.div>
         </div>
       </section>

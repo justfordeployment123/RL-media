@@ -17,10 +17,12 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <span className="hero-badge">Get in Touch</span>
             <h1 className="page-title">Contact</h1>
             <p className="contact-hero-subtitle">
               For general inquiries: <strong>info@rlaimediagroup.com</strong>
             </p>
+            <div className="hero-accent-line"></div>
           </motion.div>
         </div>
       </section>

@@ -111,6 +111,7 @@ const Platforms = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <span className="hero-badge">Platform Ecosystem</span>
             <h1 className="page-title">Our Platforms</h1>
             <p className="page-subtitle">
               RL AI Media Group operates a portfolio of independent but interoperable platforms.
@@ -118,6 +119,7 @@ const Platforms = () => {
             <p className="page-description">
               Each company addresses a specific infrastructure gap in the AI ecosystem.
             </p>
+            <div className="hero-accent-line"></div>
           </motion.div>
         </div>
       </section>

@@ -9,16 +9,40 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isMenuOpen]);
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -29,12 +53,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          <img 
-            src="/RL_AI_Media_group.PNG" 
-            alt="RL AI Media Group" 
+        <Link to="/" className="nav-logo" aria-label="RL AI Media Group - Home">
+          <img
+            src="/RL_AI_Media_group.PNG"
+            alt="RL AI Media Group"
             className="logo-img"
             onError={(e) => {
               e.target.style.display = 'none';
@@ -50,20 +74,22 @@ const Navigation = () => {
         <button
           className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMenuOpen}
+          aria-controls="nav-links"
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+        <ul id="nav-links" className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <li key={link.path}>
               <Link
                 to={link.path}
                 className={location.pathname === link.path ? 'active' : ''}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
               </Link>
@@ -76,4 +102,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

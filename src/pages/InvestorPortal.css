@@ -5,13 +5,13 @@
 
 /* Login Section */
 .investor-login-section {
-  height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 2rem 0;
+  padding: 6rem 2rem 4rem;
   background: linear-gradient(180deg, #0A1220 0%, #0f1a2e 100%);
 }
 
@@ -589,8 +589,8 @@
 
 @media (max-width: 768px) {
   .investor-login-section {
-    padding: 8rem 0;
-    min-height: calc(100vh - 80px);
+    min-height: 60vh;
+    padding: 5rem 1rem 3rem;
   }
 
   .investor-hero {
@@ -617,8 +617,8 @@
 
 @media (max-width: 480px) {
   .investor-login-section {
-    padding: 6rem 0;
-    min-height: calc(100vh - 80px);
+    min-height: 50vh;
+    padding: 4rem 1rem 2rem;
   }
 
   .login-container {
