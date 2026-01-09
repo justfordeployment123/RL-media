@@ -18,7 +18,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="hero-badge">Get in Touch</span>
-            <h1 className="page-title">Contact</h1>
+            <h1 className="page-title">CONTACT</h1>
             <p className="contact-hero-subtitle">
               For general inquiries: <strong>info@rlaimediagroup.com</strong>
             </p>
@@ -37,7 +37,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2>Get in Touch</h2>
+            <h2>GET IN TOUCH</h2>
             <div className="accent-line" />
           </motion.div>
 

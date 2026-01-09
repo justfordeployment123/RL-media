@@ -319,18 +319,26 @@
 
 .platform-logo-wrapper {
   margin-bottom: 1.5rem;
-  min-height: 80px;
+  min-height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .platform-logo {
-  width: 180px !important;
-  height: 80px !important;
+  width: 240px !important;
+  height: 110px !important;
   object-fit: contain;
   filter: brightness(1.1);
   transition: transform 0.3s ease;
+}
+
+/* Ensure Mirabody and VerdictIQ logos scale to full size */
+.platform-card[data-platform="mirabody"] .platform-logo,
+.platform-card[data-platform="verdictiq"] .platform-logo {
+  width: 240px !important;
+  height: 110px !important;
+  object-fit: contain;
 }
 
 .platform-card:hover .platform-logo {

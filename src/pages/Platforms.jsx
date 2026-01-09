@@ -112,7 +112,7 @@ const Platforms = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="hero-badge">Platform Ecosystem</span>
-            <h1 className="page-title">Our Platforms</h1>
+            <h1 className="page-title">OUR PLATFORMS</h1>
             <p className="page-subtitle">
               RL AI Media Group operates a portfolio of independent but interoperable platforms.
             </p>
@@ -134,7 +134,7 @@ const Platforms = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Why Independent Platforms?
+            WHY INDEPENDENT PLATFORMS?
           </motion.h2>
           <div className="accent-line-center"></div>
           <div className="ecosystem-grid">
@@ -181,6 +181,7 @@ const Platforms = () => {
               <motion.div
                 key={platform.id}
                 className="platform-item"
+                data-platform={platform.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

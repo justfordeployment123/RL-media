@@ -27,7 +27,7 @@ const Home = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <span className="hero-badge">AI Infrastructure & Media</span>
-            <h1 className="hero-title">RL AI Media Group</h1>
+            <h1 className="hero-title">RL AI MEDIA GROUP</h1>
             <p className="hero-subtitle">
               AI infrastructure and media platforms focused on identity, culture, and governance.
             </p>
@@ -47,7 +47,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            What We Do
+            WHAT WE DO
           </motion.h2>
           <div className="accent-line-center"></div>
           
@@ -94,7 +94,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Our Platforms
+            OUR PLATFORMS
           </motion.h2>
           <div className="accent-line-center"></div>
           
@@ -103,6 +103,7 @@ const Home = () => {
               <motion.div
                 key={platform.id}
                 className="platform-card"
+                data-platform={platform.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

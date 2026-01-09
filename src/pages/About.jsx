@@ -18,7 +18,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="hero-badge">Our Story</span>
-            <h1 className="page-title">About RL AI Media Group</h1>
+            <h1 className="page-title">ABOUT RL AI MEDIA GROUP</h1>
             <p className="hero-description">
               Building responsible AI infrastructure at the intersection of media, technology, and long-term trust.
             </p>
@@ -84,7 +84,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Who We Are
+            WHO WE ARE
           </motion.h2>
           <div className="accent-line-center"></div>
           <div className="about-content">
@@ -120,7 +120,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Core Principles
+            CORE PRINCIPLES
           </motion.h2>
           <div className="accent-line-center"></div>
           <div className="principles-grid">

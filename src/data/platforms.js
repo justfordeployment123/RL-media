@@ -9,7 +9,7 @@ export const platforms = [
   },
   {
     id: 'framegenix',
-    name: 'Framegenix',
+    name: 'FRAMEGENIX',
     description: 'Creative AI tools for filmmakers, musicians, and storytellers.',
     detailedDescription: 'A creative AI ecosystem supporting production, collaboration, and rights awareness.',
     logo: '/frame_genix.png',
@@ -25,7 +25,7 @@ export const platforms = [
   },
   {
     id: 'culturevault',
-    name: 'CultureVault',
+    name: 'CULTUREVAULT',
     description: 'Digital preservation and access for cultural archives.',
     detailedDescription: 'Tools for preserving, organizing, and accessing cultural and historical media.',
     logo: '/culture_vault.png',
@@ -33,7 +33,7 @@ export const platforms = [
   },
   {
     id: 'datawrap',
-    name: 'Datawrap',
+    name: 'DATAWRAP',
     description: 'Structured data preparation and governance for AI workflows.',
     detailedDescription: 'Data normalization and governance for enterprise and creative AI systems.',
     logo: '/datawrap.png',
@@ -41,10 +41,26 @@ export const platforms = [
   },
   {
     id: 'aural-unity',
-    name: 'Aural-Unity',
+    name: 'AURAL-UNITY',
     description: 'Audio integrity, provenance, and rights protection systems.',
     detailedDescription: 'Audio authentication and rights enforcement across AI and digital media.',
     logo: '/AuralUnity_logo.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'mirabody',
+    name: 'MIRABODY',
+    description: 'Advanced AI media production and creative tools.',
+    detailedDescription: 'Innovative platform for AI-driven media creation and content production.',
+    logo: '/mirabody.png',
+    dropboxLink: '#',
+  },
+  {
+    id: 'verdictiq',
+    name: 'VERDICTIQ',
+    description: 'AI-powered legal intelligence and analysis platform.',
+    detailedDescription: 'Intelligent legal research and case analysis system powered by AI.',
+    logo: '/verdict_iq.png',
     dropboxLink: '#',
   },
 ];
