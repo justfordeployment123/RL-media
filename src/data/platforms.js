@@ -1,4 +1,24 @@
-export const platforms = [
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
+let cachedPlatforms = null;
+
+export const getPlatforms = async () => {
+  try {
+    if (cachedPlatforms) return cachedPlatforms;
+    
+    const response = await fetch(`${API_URL}/platforms`);
+    if (!response.ok) throw new Error('Failed to fetch platforms');
+    
+    cachedPlatforms = await response.json();
+    return cachedPlatforms;
+  } catch (error) {
+    console.error('Error fetching platforms:', error);
+    // Fallback to default platforms
+    return getDefaultPlatforms();
+  }
+};
+
+export const getDefaultPlatforms = () => [
   {
     id: 'liqon',
     name: 'LIQON',
@@ -64,4 +84,7 @@ export const platforms = [
     dropboxLink: '#',
   },
 ];
+
+// For backward compatibility
+export const platforms = getDefaultPlatforms();
 
