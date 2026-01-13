@@ -24,7 +24,6 @@ const InvestorPortal = () => {
     setIsLoading(true);
     
     setTimeout(() => {
-      // Default password
       const correctPassword = 'investor';
       
       if (password === correctPassword) {

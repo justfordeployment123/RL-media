@@ -1,102 +1,34 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Target, Link2, Scale, CheckCircle } from 'lucide-react';
-import { platforms } from '../data/platforms';
+import { platforms as defaultPlatforms } from '../data/platforms';
 import './Platforms.css';
 
-const platformDetails = {
-  liqon: {
-    useCases: [
-      'AI-generated content with verified consent',
-      'Digital twin management for entertainers',
-      'Likeness protection in synthetic media'
-    ],
-    features: [
-      'Blockchain-verified consent records',
-      'Real-time likeness monitoring',
-      'Automated rights management',
-      'Identity verification protocols',
-      'Audit trail for all usage'
-    ],
-    integration: 'Connects with Framegenix for media production, CultureVault for archival, and Aural-Unity for audio verification.'
-  },
-  framegenix: {
-    useCases: [
-      'AI-assisted film and video production',
-      'Music composition with rights awareness',
-      'Collaborative storytelling tools'
-    ],
-    features: [
-      'Generative media creation tools',
-      'Real-time collaboration workspace',
-      'Built-in rights tracking',
-      'Version control for creative assets',
-      'AI-powered editing assistance'
-    ],
-    integration: 'Integrates with LIQON for identity management, VOYCITY for localization, and Datawrap for asset governance.'
-  },
-  voycity: {
-    useCases: [
-      'Real-time multilingual conferences',
-      'Content localization at scale',
-      'Accessible communication systems'
-    ],
-    features: [
-      'Neural translation engine',
-      'Voice cloning with consent',
-      'Low-latency processing',
-      '100+ language pairs',
-      'Cultural context preservation'
-    ],
-    integration: 'Works with Framegenix for media localization, CultureVault for historical translations, and Aural-Unity for voice verification.'
-  },
-  culturevault: {
-    useCases: [
-      'Museum and archive digitization',
-      'Indigenous cultural preservation',
-      'Historical media restoration'
-    ],
-    features: [
-      'High-fidelity digitization',
-      'Metadata enrichment AI',
-      'Secure access controls',
-      'Cultural sensitivity filters',
-      'Long-term preservation protocols'
-    ],
-    integration: 'Connects with LIQON for rights management, Datawrap for metadata governance, and VOYCITY for multilingual access.'
-  },
-  datawrap: {
-    useCases: [
-      'Enterprise AI data preparation',
-      'Creative asset organization',
-      'Compliance-ready data pipelines'
-    ],
-    features: [
-      'Automated data normalization',
-      'Governance rule engine',
-      'Lineage tracking',
-      'Quality validation',
-      'Privacy-preserving transformations'
-    ],
-    integration: 'Provides data infrastructure for all platforms, ensuring consistent governance and quality across the ecosystem.'
-  },
-  'aural-unity': {
-    useCases: [
-      'Audio deepfake detection',
-      'Music rights protection',
-      'Podcast authentication'
-    ],
-    features: [
-      'Audio fingerprinting',
-      'Provenance verification',
-      'Watermarking technology',
-      'Rights enforcement automation',
-      'Tampering detection'
-    ],
-    integration: 'Works with LIQON for voice consent, VOYCITY for translated audio verification, and Framegenix for media authenticity.'
-  }
-};
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const Platforms = () => {
+  const [platforms, setPlatforms] = useState(defaultPlatforms);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${API_URL}/platforms`);
+        if (res.ok) {
+          const data = await res.json();
+          setPlatforms(data || defaultPlatforms);
+        }
+      } catch (error) {
+        console.error('Failed to load platforms:', error);
+        setPlatforms(defaultPlatforms);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="platforms-page">
       <section className="platforms-hero">
