@@ -1,9 +1,55 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Zap, Globe, CheckCircle } from 'lucide-react';
-import { platforms } from '../data/platforms';
+import { platforms as defaultPlatforms } from '../data/platforms';
 import './Home.css';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const Home = () => {
+  const [homeData, setHomeData] = useState(null);
+  const [platformsList, setPlatformsList] = useState(defaultPlatforms);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch home page data
+        const homeRes = await fetch(`${API_URL}/home`);
+        if (homeRes.ok) {
+          const data = await homeRes.json();
+          setHomeData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching home data:', error);
+      }
+
+      try {
+        // Fetch platforms
+        const platformRes = await fetch(`${API_URL}/platforms`);
+        if (platformRes.ok) {
+          const data = await platformRes.json();
+          setPlatformsList(data || defaultPlatforms);
+        }
+      } catch (error) {
+        console.error('Error fetching platforms:', error);
+      }
+
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>;
+  }
+  const heroBadge = homeData?.heroBadge || 'AI Infrastructure & Media';
+  const heroTitle = homeData?.heroTitle || 'RL AI MEDIA GROUP';
+  const heroSubtitle = homeData?.heroSubtitle || 'AI infrastructure and media platforms focused on identity, culture, and governance.';
+  const whatWeDo = homeData?.whatWeDo || [];
+  const platforms = platformsList;
+
   return (
     <div className="home-page">
       {/* Hero Section with Animated Background */}
@@ -26,10 +72,10 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <span className="hero-badge">AI Infrastructure & Media</span>
-            <h1 className="hero-title">RL AI Media Group</h1>
+            <span className="hero-badge">{heroBadge}</span>
+            <h1 className="hero-title">{heroTitle}</h1>
             <p className="hero-subtitle">
-              AI infrastructure and media platforms focused on identity, culture, and governance.
+              {heroSubtitle}
             </p>
             <div className="hero-accent-line"></div>
           </motion.div>
@@ -47,38 +93,28 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            What We Do
+            WHAT WE DO
           </motion.h2>
           <div className="accent-line-center"></div>
           
           <div className="what-we-do-content">
-            {[
-              {
-                icon: <Zap size={24} />,
-                text: 'RL AI Media Group builds practical AI platforms for organizations working with people, data, and creative systems.'
-              },
-              {
-                icon: <Globe size={24} />,
-                text: 'We focus on trust, accountability, and long-term use — not experimentation.'
-              },
-              {
-                icon: <Globe size={24} />,
-                text: 'Our companies operate across media, technology, and cultural infrastructure.'
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="what-we-do-block"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ x: 10, backgroundColor: 'rgba(47, 128, 237, 0.08)' }}
-              >
-                <div className="block-icon">{item.icon}</div>
-                <p className="what-we-do-text">{item.text}</p>
-              </motion.div>
-            ))}
+            {whatWeDo.map((item, index) => {
+              const IconComponent = item.icon === 'Zap' ? Zap : Globe;
+              return (
+                <motion.div
+                  key={index}
+                  className="what-we-do-block"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ x: 10, backgroundColor: 'rgba(47, 128, 237, 0.08)' }}
+                >
+                  <div className="block-icon"><IconComponent size={24} /></div>
+                  <p className="what-we-do-text">{item.text}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
         <div className="geometric-accent accent-bottom"></div>
@@ -94,15 +130,16 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Our Platforms
+            OUR PLATFORMS
           </motion.h2>
           <div className="accent-line-center"></div>
           
           <div className="platforms-grid">
             {platforms.map((platform, index) => (
               <motion.div
-                key={platform.id}
+                key={platform.id || index}
                 className="platform-card"
+                data-platform={platform.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

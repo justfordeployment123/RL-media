@@ -24,7 +24,6 @@ const InvestorPortal = () => {
     setIsLoading(true);
     
     setTimeout(() => {
-      // Default password
       const correctPassword = 'investor';
       
       if (password === correctPassword) {
@@ -61,7 +60,7 @@ const InvestorPortal = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="login-title">Investor Portal</h1>
+              <h1 className="login-title">INVESTOR PORTAL</h1>
               <p className="login-subtitle">
                 This portal provides access to confidential materials for RL AI Media Group and its operating companies.
               </p>

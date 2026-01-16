@@ -537,6 +537,18 @@
   margin: 0;
 }
 
+.approach-text h3 {
+  font-weight: 700;
+}
+
+.approach-number {
+  display: none;
+}
+
+.block-number {
+  display: none;
+}
+
 /* Responsive Adjustments for New Sections */
 @media (max-width: 768px) {
   .mvv-grid,

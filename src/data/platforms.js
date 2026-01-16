@@ -1,4 +1,24 @@
-export const platforms = [
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
+let cachedPlatforms = null;
+
+export const getPlatforms = async () => {
+  try {
+    if (cachedPlatforms) return cachedPlatforms;
+    
+    const response = await fetch(`${API_URL}/platforms`);
+    if (!response.ok) throw new Error('Failed to fetch platforms');
+    
+    cachedPlatforms = await response.json();
+    return cachedPlatforms;
+  } catch (error) {
+    console.error('Error fetching platforms:', error);
+    // Fallback to default platforms
+    return getDefaultPlatforms();
+  }
+};
+
+export const getDefaultPlatforms = () => [
   {
     id: 'liqon',
     name: 'LIQON',
@@ -9,7 +29,7 @@ export const platforms = [
   },
   {
     id: 'framegenix',
-    name: 'Framegenix',
+    name: 'FRAMEGENIX',
     description: 'AI creative infrastructure for film, music, and narrative production.',
     detailedDescription: 'AI creative infrastructure for film, music, and narrative production.',
     logo: '/frame_genix.png',
@@ -25,7 +45,7 @@ export const platforms = [
   },
   {
     id: 'culturevault',
-    name: 'CultureVault',
+    name: 'CULTUREVAULT',
     description: 'AI-powered cultural preservation, provenance, and archival infrastructure.',
     detailedDescription: 'AI-powered cultural preservation, provenance, and archival infrastructure.',
     logo: '/culture_vault.png',
@@ -33,26 +53,37 @@ export const platforms = [
   },
   {
     id: 'datawrap',
-    name: 'Datawrap',
+    name: 'DATAWRAP',
     description: 'AI-ready, compliance-safe data fabric and governance layer.',
     detailedDescription: 'AI-ready, compliance-safe data fabric and governance layer.',
     logo: '/datawrap.png',
     dropboxLink: '#',
   },
   {
-    id: 'verdict-iq',
-    name: 'VerdictIQ',
-    description: 'AI-governed legal intelligence, prediction, and justice systems.',
-    detailedDescription: 'AI-governed legal intelligence, prediction, and justice systems.',
-    logo: '/verdict_iq.png',
+    id: 'aural-unity',
+    name: 'AURAL-UNITY',
+    description: 'Consent-based AI voice, audio, and sound identity governance.',
+    detailedDescription: 'Consent-based AI voice, audio, and sound identity governance.',
+    logo: '/AuralUnity_logo.png',
     dropboxLink: '#',
   },
   {
     id: 'mirabody',
-    name: 'Mirabody',
+    name: 'MIRABODY',
     description: 'Predictive human health, risk, and bio-intelligence modeling.',
     detailedDescription: 'Predictive human health, risk, and bio-intelligence modeling.',
     logo: '/mirabody.PNG',
     dropboxLink: '#',
   },
+  {
+    id: 'verdictiq',
+    name: 'VERDICTIQ',
+    description: 'AI-governed legal intelligence, prediction, and justice systems.',
+    detailedDescription: 'AI-governed legal intelligence, prediction, and justice systems.',
+    logo: '/verdict_iq.png',
+    dropboxLink: '#',
+  },
 ];
+
+// For backward compatibility
+export const platforms = getDefaultPlatforms();
