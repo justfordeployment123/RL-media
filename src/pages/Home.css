@@ -353,7 +353,13 @@
 
 /* Special styling for Framegenix logo - larger size */
 .platform-logo[src*="framegenix"] {
-  height: 180px !important;
+  height: 240px !important;
+  max-width: 100%;
+}
+
+/* Keep card size consistent - allow logo to overflow wrapper if needed */
+.platform-logo-wrapper {
+  overflow: visible;
 }
 
 .platform-logo-fallback {
