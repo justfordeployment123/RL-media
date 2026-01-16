@@ -200,12 +200,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  min-height: 190px;
 }
 
 .platform-item-img {
-  max-width: 180px;
-  max-height: 100px;
+  max-width: 240px;
+  max-height: 120px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -215,6 +215,24 @@
 
 .platform-item:hover .platform-item-img {
   transform: scale(1.05);
+}
+
+/* Special styling for Datawrap logo - increase contrast and size for better readability */
+.platform-item-img[src*="datawrap"] {
+  filter: brightness(1.3) contrast(1.2);
+  max-height: 180px;
+}
+
+/* Special styling for small logos */
+.platform-item-img[src*="liqon"],
+.platform-item-img[src*="verdict"],
+.platform-item-img[src*="mirabody"] {
+  max-height: 180px;
+}
+
+/* Special styling for Framegenix logo - larger size */
+.platform-item-img[src*="framegenix"] {
+  max-height: 220px;
 }
 
 .platform-item-fallback {

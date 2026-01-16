@@ -412,11 +412,29 @@
 }
 
 .platform-card-header .platform-logo {
-  max-width: 180px;
-  max-height: 80px;
+  max-width: 220px;
+  max-height: 100px;
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+/* Special styling for Datawrap logo in card header */
+.platform-card-header img[src*="datawrap"].platform-logo {
+  filter: brightness(1.3) contrast(1.2);
+  max-height: 150px;
+}
+
+/* Special styling for small logos in card header */
+.platform-card-header img[src*="liqon"].platform-logo,
+.platform-card-header img[src*="verdict"].platform-logo,
+.platform-card-header img[src*="mirabody"].platform-logo {
+  max-height: 150px;
+}
+
+/* Special styling for Framegenix logo in card header - larger size */
+.platform-card-header img[src*="framegenix"].platform-logo {
+  max-height: 180px;
 }
 
 .platform-card-header h3 {
@@ -890,9 +908,30 @@
 }
 
 .platform-logo {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
+}
+
+/* Special styling for Datawrap logo - increase contrast and size for better readability */
+img[src*="datawrap"].platform-logo {
+  filter: brightness(1.3) contrast(1.2);
+  width: 160px;
+  height: 160px;
+}
+
+/* Special styling for small logos */
+img[src*="liqon"].platform-logo,
+img[src*="verdict"].platform-logo,
+img[src*="mirabody"].platform-logo {
+  width: 160px;
+  height: 160px;
+}
+
+/* Special styling for Framegenix logo - larger size */
+img[src*="framegenix"].platform-logo {
+  width: 200px;
+  height: 200px;
 }
 
 .platform-card h3 {
