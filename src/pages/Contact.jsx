@@ -1,38 +1,9 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import { Mail, DollarSign } from 'lucide-react';
 import './Contact.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
 const Contact = () => {
-  const [contactData, setContactData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${API_URL}/contact`);
-        if (res.ok) {
-          const data = await res.json();
-          setContactData(data);
-        }
-      } catch (error) {
-        console.error('Error fetching contact data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>;
-  }
-
-  // Default contact data for fallback
-  const defaultContacts = [
+  const contacts = [
     {
       title: 'General Inquiries',
       email: 'info@rlaimediagroup.com',
@@ -55,9 +26,6 @@ const Contact = () => {
     }
   ];
 
-  const contacts = contactData?.contacts || defaultContacts;
-  const heroSubtitle = contactData?.generalEmail ? `For general inquiries: ${contactData.generalEmail}` : 'Get in touch with us';
-
   return (
     <main id="main" className="contact-page">
       <section className="contact-hero">
@@ -75,7 +43,7 @@ const Contact = () => {
             <span className="hero-badge">Get in Touch</span>
             <h1 className="page-title">CONTACT</h1>
             <p className="contact-hero-subtitle">
-              For general inquiries: <strong>{contactData?.generalEmail || 'info@rlaimediagroup.com'}</strong>
+              For general inquiries: <strong>info@rlaimediagroup.com</strong>
             </p>
             <div className="hero-accent-line"></div>
           </motion.div>

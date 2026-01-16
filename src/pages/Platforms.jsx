@@ -1,33 +1,9 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import { Target, Link2, Scale, CheckCircle } from 'lucide-react';
-import { platforms as defaultPlatforms } from '../data/platforms';
+import { platforms } from '../data/platforms';
 import './Platforms.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
 const Platforms = () => {
-  const [platforms, setPlatforms] = useState(defaultPlatforms);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${API_URL}/platforms`);
-        if (res.ok) {
-          const data = await res.json();
-          setPlatforms(data || defaultPlatforms);
-        }
-      } catch (error) {
-        console.error('Failed to load platforms:', error);
-        setPlatforms(defaultPlatforms);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <div className="platforms-page">

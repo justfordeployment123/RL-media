@@ -1,42 +1,31 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import { Target, Telescope, Scale, Shield, Globe, BarChart3, Wrench, Handshake, Clock } from 'lucide-react';
 import './About.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
 const About = () => {
-  const [aboutData, setAboutData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${API_URL}/about`);
-        if (res.ok) {
-          const data = await res.json();
-          setAboutData(data);
-        }
-      } catch (error) {
-        console.error('Error fetching about data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>;
-  }
-
-  const mission = aboutData?.mission?.description || 'Build practical AI infrastructure that respects identity, protects culture, and scales with governance at its core.';
-  const vision = aboutData?.vision?.description || 'A future where AI systems are accountable to the people and cultures they impact, enabling trust at scale.';
-  const values = aboutData?.values?.description || 'Accountability, transparency, cultural respect, and long-term thinking in every platform we build.';
-  const whoWeAre = aboutData?.whoWeAre || [];
-  const corePrinciples = aboutData?.corePrinciples || [];
-  const ourApproach = aboutData?.ourApproach || [];
+  const mission = 'Build practical AI infrastructure that respects identity, protects culture, and scales with governance at its core.';
+  const vision = 'A future where AI systems are accountable to the people and cultures they impact, enabling trust at scale.';
+  const values = 'Accountability, transparency, cultural respect, and long-term thinking in every platform we build.';
+  const whoWeAre = [
+    'A team of engineers, researchers, and creators building AI infrastructure for the long term.',
+    'Platform builders who prioritize interoperability, governance, and cultural sensitivity.',
+    'Advocates for consent-first AI systems that respect identity and likeness rights.',
+    'Partners with creators, institutions, and communities to preserve and protect cultural heritage.'
+  ];
+  const corePrinciples = [
+    { title: 'Identity First', text: 'Every platform respects and protects individual and cultural identity.' },
+    { title: 'Consent-Based', text: 'Explicit consent is required for any use of identity, likeness, or voice.' },
+    { title: 'Interoperable', text: 'Platforms work together seamlessly while maintaining independence.' },
+    { title: 'Governance Built-In', text: 'Compliance and governance are infrastructure features, not add-ons.' },
+    { title: 'Cultural Respect', text: 'We honor and preserve cultural context in all our systems.' },
+    { title: 'Long-Term Thinking', text: 'We build for sustainability and trust over decades, not quarters.' }
+  ];
+  const ourApproach = [
+    { heading: 'Infrastructure First', text: 'We build foundational platforms that others can build on, ensuring governance and compliance are built into the infrastructure layer.' },
+    { heading: 'Platform Independence', text: 'Each platform operates independently but is designed to interoperate with others in our ecosystem.' },
+    { heading: 'Cultural Sensitivity', text: 'We work closely with communities and cultural institutions to ensure our systems respect and preserve heritage.' },
+    { heading: 'Consent & Rights', text: 'Every platform prioritizes explicit consent and rights management, protecting creators and individuals.' }
+  ];
 
   return (
     <div className="about-page">

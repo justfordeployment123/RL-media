@@ -1,54 +1,17 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { Zap, Globe, CheckCircle } from 'lucide-react';
-import { platforms as defaultPlatforms } from '../data/platforms';
+import { Zap, Globe } from 'lucide-react';
+import { platforms } from '../data/platforms';
 import './Home.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
 const Home = () => {
-  const [homeData, setHomeData] = useState(null);
-  const [platformsList, setPlatformsList] = useState(defaultPlatforms);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch home page data
-        const homeRes = await fetch(`${API_URL}/home`);
-        if (homeRes.ok) {
-          const data = await homeRes.json();
-          setHomeData(data);
-        }
-      } catch (error) {
-        console.error('Error fetching home data:', error);
-      }
-
-      try {
-        // Fetch platforms
-        const platformRes = await fetch(`${API_URL}/platforms`);
-        if (platformRes.ok) {
-          const data = await platformRes.json();
-          setPlatformsList(data || defaultPlatforms);
-        }
-      } catch (error) {
-        console.error('Error fetching platforms:', error);
-      }
-
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>;
-  }
-  const heroBadge = homeData?.heroBadge || 'AI Infrastructure & Media';
-  const heroTitle = homeData?.heroTitle || 'RL AI MEDIA GROUP';
-  const heroSubtitle = homeData?.heroSubtitle || 'AI infrastructure and media platforms focused on identity, culture, and governance.';
-  const whatWeDo = homeData?.whatWeDo || [];
-  const platforms = platformsList;
+  const heroBadge = 'AI Infrastructure & Media';
+  const heroTitle = 'RL AI MEDIA GROUP';
+  const heroSubtitle = 'AI infrastructure and media platforms focused on identity, culture, and governance.';
+  const whatWeDo = [
+    { icon: 'Zap', text: 'Build AI infrastructure that respects identity, consent, and cultural context.' },
+    { icon: 'Globe', text: 'Create interoperable platforms that work together while operating independently.' },
+    { icon: 'Zap', text: 'Enable governance and compliance at the infrastructure layer, not as an afterthought.' }
+  ];
 
   return (
     <div className="home-page">
